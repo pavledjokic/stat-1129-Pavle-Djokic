@@ -9,8 +9,15 @@ class Player:
         self.name = name
         self.score = score
 def checkname(name):
+    try:
+        x = name.isalpha()
+        if (x == False):
+            raise ValueError("That is not a valid input. Your name must consist of all alphabet letters. \nExample of characters that are not alphabet letters: (space)!#%&? etc.")
+    except ValueError as ve:
+        print(ve)
+        print("That is not a valid input")
     while not name.isalpha():
-            name = input("I'm sorry, your name must be a string or an alphabet. Please try again: ")
+        name = input("Please try again: ")
     return name
 def checkmove(move):
     valid = 0
@@ -70,6 +77,8 @@ def scorekeeper(input):
 
    
 
+   
+
 
 # In[ ]:
 
@@ -94,7 +103,11 @@ while(answer == 'y') or (answer == 'yes'):
         roundwin = result(p1move, p2move)
         scorekeeper(roundwin)
 
-    input("\nWant to play again? Type 'Yes' to continue: ").lower()
+    answer = input("\nWant to play again? Type 'Yes' to continue: ").lower()
+    
+if not (answer == 'y') or (answer == 'yes'):
+    print("\nGoodbye! Thank you for playing! :)")
+
 
 
 # In[ ]:
